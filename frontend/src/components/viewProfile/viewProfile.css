@@ -198,7 +198,7 @@
         font-style: normal;
 
         color: white;
-        background-color: #021C8B;
+        background-color: #4B82C2;
 
         border: none;
         outline: none;
@@ -206,7 +206,7 @@
     }
 
     .viewFollow p{
-        color: #021C8B;
+        color: #4B82C2;
     }
     /* >>> RESPONSIVE <<< */
     @media screen and (max-width: 1000px) {
