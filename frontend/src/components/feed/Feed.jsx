@@ -37,10 +37,10 @@ function Feed({}) {
             <section className='bottomFeed'>
               {
                 postData.map(x => {
-                  const {postId, name, title, content} = x;
+                  const {postId, name, title, content, userId} = x;
                   return (
                     
-                      <Post key={postId} buttonTypes={postButtons} id={postId} author={name} title={title} content={content} />
+                      <Post key={postId} buttonTypes={postButtons} id={postId} author={name} title={title} userId={userId} content={content} />
                     
                   )
                 })

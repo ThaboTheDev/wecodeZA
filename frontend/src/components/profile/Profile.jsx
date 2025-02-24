@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./profile.css"
 import { FaArrowLeft } from "react-icons/fa6";
 import ProfileHome from '../profileHome/ProfileHome';
@@ -24,6 +24,11 @@ function Profile({}) {
             icon: <FaRegTrashAlt />
         }
     ]
+
+    // const [data, setData] = useState({});
+
+  const [data, setData] = useState(null);
+
 
     const getData = getUserDataById(1);
     const {userId, name, miniDes, mainDes, following, followers, dateJoined} = getData;

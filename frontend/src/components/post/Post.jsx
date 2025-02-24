@@ -3,13 +3,15 @@ import "./post.css"
 import { Link } from 'react-router-dom';
 
 
-function Post({buttonTypes, id, author, title, content}) {
+function Post({buttonTypes, id, author, title, content, userId}) {
+    // If i direct to my account it will take me to my profile page else to other Authores profiles
+    const passCorrectUrl = userId === 1? `/viewProfile` : `/viewAuthor/${userId}`;
   return (
     <div className="postContainer" key={id}>
         <div className="feedPostDetails">
-            <p>
-                {author}
-            </p>
+            <Link to={passCorrectUrl} style={{color: "black", textDecoration: "none"}}>
+                <p>{author}</p>
+            </Link>
             
             <p style={{borderRight: "1px solid black", width: "10px"}}></p>
 

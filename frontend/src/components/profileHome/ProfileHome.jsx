@@ -14,9 +14,7 @@ function ProfileHome({buttonTypes, userId}) {
             getData.map(x => {
                   const {postId, name, title, content, topic} = x;
                   return (
-                    <Link to={`/postHome/${postId}`} style={{color: "black", textDecoration: "none"}} >
                       <Post key={postId} buttonTypes={buttonTypes} id={postId} author={name} title={title} content={content} />
-                    </Link>
                   )
             })
         }
