@@ -5,12 +5,14 @@ import com.wecodeZA.backend.User.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 import java.util.List;
 
 @Configuration
 public class PostConfiguration {
 
+    @Order(2)
     @Bean
     CommandLineRunner postCommandLineRunner(PostRepository postRepository, UserRepository userRepository) {
         return args -> {

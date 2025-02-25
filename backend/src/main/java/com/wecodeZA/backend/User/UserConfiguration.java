@@ -3,6 +3,7 @@ package com.wecodeZA.backend.User;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @Configuration
 public class UserConfiguration {
 
+    @Order(1)
     @Bean
     CommandLineRunner commandLineRunner(
             UserRepository repository) {
