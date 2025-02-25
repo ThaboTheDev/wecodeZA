@@ -20,9 +20,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/health", "/api/v1/user/new").permitAll() // Public endpoints
                         .requestMatchers("/").permitAll()) // You can change this to .authenticated() if needed
-                .httpBasic()
-                .cors0() // Enable CORS for Spring Security
-                .and()
                 .build();
     }
 
