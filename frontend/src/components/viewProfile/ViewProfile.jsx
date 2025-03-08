@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./viewProfile.css"
 import { FaArrowLeft } from "react-icons/fa6";
 import ProfileHome from '../profileHome/ProfileHome';
@@ -7,6 +7,10 @@ import { CiHeart } from "react-icons/ci";
 import { useParams } from 'react-router-dom';
 import { getUserDataById } from '../../testData/testData';
 import FeedHeader from '../feedHeader/FeedHeader';
+import axios from 'axios';
+import { use } from 'react';
+import { getUserById } from '../../api/ProfileApi';
+
 
 function ViewProfile() {
     const postButtons = [
@@ -17,20 +21,42 @@ function ViewProfile() {
     ]
 
     const params = useParams()
-    const authorID = params.authorId;
+    const authorID = parseInt(params.authorId);
 
-    const getData = getUserDataById(Number(authorID));
-    const {userId, name, miniDes, mainDes, following, followers, dateJoined} = getData;
+    // const getData = getUserDataById(Number(authorID));
+    // const {userId, name, miniDes, mainDes, following, followers, dateJoined} = getData;
 
     const [viewerPage, setViewerPage] = useState(0);
     let currentViewerPage;
 
-    // Navigating the Home and About sections
-    if (viewerPage === 0) currentViewerPage = <ProfileHome buttonTypes={postButtons} userId={userId} />;
-    else if( viewerPage === 1) currentViewerPage = <ProfileAbout des={mainDes} following={following} followers={followers} dateJoined={dateJoined} />
 
+
+    const [profileData, setProfileData] = useState();
+    const [viewLoad, setViewLoad] = useState(true);
+    useEffect(function (){
+        const fetchUser = async ()=> {
+            try{
+                const data = await getUserById(authorID);
+                setProfileData(data);
+            } catch (error){
+                console.log(error)
+            } finally{
+                setViewLoad(false)
+            }
+        }
+        fetchUser()
+    },[])
+
+    if (viewLoad) return <p>Loading...</p>
+    else if (profileData){
+        const {id, username, lastname, name, bio} = profileData;
+        console.log(profileData)
+        // Navigating the Home and About sections
+        if (viewerPage === 0) currentViewerPage = <ProfileHome buttonTypes={postButtons} userId={id} />;
+        else if( viewerPage === 1) currentViewerPage = <ProfileAbout des={bio} following={22} followers={55} dateJoined={2003} />
   return <>
     <FeedHeader />
+
     <main className='viewProfileMain'>
         <article className="viewProfileLeft">
             <section className='viewLeftTop'>
@@ -40,7 +66,7 @@ function ViewProfile() {
                     </button>
                 </div> */}
 
-                <h1 className='viewName'>{name}</h1>
+                <h1 className='viewName'>{username}</h1>
 
             </section>
 
@@ -66,7 +92,7 @@ function ViewProfile() {
                 </button>
             </div>
             <h2>
-                {name}
+                {name} {lastname}
             </h2>
 
             <p>
@@ -74,7 +100,7 @@ function ViewProfile() {
             </p>
 
             <p className='viewDes'>
-                {miniDes}
+                {bio}
             </p>
 
             <div className="viewFollow">
@@ -83,12 +109,13 @@ function ViewProfile() {
                 </button>
 
                 <p>
-                    {following} Following
+                    {"following"} Following
                 </p>
             </div>
         </article>
     </main>
   </>
+    }
 }
 
 export default ViewProfile
