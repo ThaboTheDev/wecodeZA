@@ -93,8 +93,9 @@ function Feed({}) {
               <section className='feedFollow'>
                 {
                   followUsers.map(x => {
-                    const {user, name, followers, following} = x;
-                    return user != 1? <FeedFollow key={user} id={user} name={name} followers={followers} /> : "";
+                    console.log(followUsers)
+                    const {id, name} = x;
+                    return id != 1? <FeedFollow key={id} id={id} name={name} followers={32} /> : "";
                   })
                 }
               </section>
