@@ -47,74 +47,69 @@ function ViewProfile() {
         fetchUser()
     },[])
 
+    // Page rendering
     if (viewLoad) return <p>Loading...</p>
     else if (profileData){
         const {id, username, lastname, name, bio} = profileData;
-        console.log(profileData)
+        
         // Navigating the Home and About sections
         if (viewerPage === 0) currentViewerPage = <ProfileHome buttonTypes={postButtons} userId={id} />;
         else if( viewerPage === 1) currentViewerPage = <ProfileAbout des={bio} following={22} followers={55} dateJoined={2003} />
-  return <>
-    <FeedHeader />
 
-    <main className='viewProfileMain'>
-        <article className="viewProfileLeft">
-            <section className='viewLeftTop'>
-                {/* <div className="viewBack bigScreenButton">
-                    <button>
-                        <FaArrowLeft />
-                    </button>
-                </div> */}
+        return <>
+            <FeedHeader />
 
-                <h1 className='viewName'>{username}</h1>
+            <main className='viewProfileMain'>
+                <article className="viewProfileLeft">
+                    <section className='viewLeftTop'>
+                        <h1 className='viewName'>{username}</h1>
+                    </section>
 
-            </section>
+                    <section className='viewLeftBottom'>
+                        <div className="viewNav">
+                            <button onClick={()=> setViewerPage(0)}>
+                                Home
+                            </button>
 
-            <section className='viewLeftBottom'>
-                <div className="viewNav">
-                    <button onClick={()=> setViewerPage(0)}>
-                        Home
-                    </button>
+                            <button onClick={()=> setViewerPage(1)}>
+                                About
+                            </button>
+                        </div>
+                        
+                        {currentViewerPage}
+                    </section>
+                </article>
 
-                    <button onClick={()=> setViewerPage(1)}>
-                        About
-                    </button>
-                </div>
-                
-                {currentViewerPage}
-            </section>
-        </article>
+                <article className='viewProfileRight'>
+                    <div className="viewBack smallScreenButton">
+                        <button>
+                            <FaArrowLeft />
+                        </button>
+                    </div>
+                    <h2>
+                        {name} {lastname}
+                    </h2>
 
-        <article className='viewProfileRight'>
-            <div className="viewBack smallScreenButton">
-                <button>
-                    <FaArrowLeft />
-                </button>
-            </div>
-            <h2>
-                {name} {lastname}
-            </h2>
+                    <p>
+                        Student at WeThinkCode
+                    </p>
 
-            <p>
-                Student at WeThinkCode
-            </p>
+                    <p className='viewDes'>
+                        {bio}
+                    </p>
 
-            <p className='viewDes'>
-                {bio}
-            </p>
+                    <div className="viewFollow">
+                        <button>
+                            Follow
+                        </button>
 
-            <div className="viewFollow">
-                <button>
-                    Follow
-                </button>
-
-                <p>
-                    {"following"} Following
-                </p>
-            </div>
-        </article>
-    </main>
-  </>
+                        <p>
+                            {"following"} Following
+                        </p>
+                    </div>
+                </article>
+            </main>
+        </>
     }
 }
 

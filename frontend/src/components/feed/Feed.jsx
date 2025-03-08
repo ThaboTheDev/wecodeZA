@@ -78,9 +78,7 @@ function Feed({}) {
                   feedData.map(x => {
                     const {id, user, topic, title, context} = x;
                     return (
-                      
                         <Post key={id} buttonTypes={postButtons} id={id} author={"name"} title={title} userId={user} content={context} />
-                      
                     )
                   })
                 }

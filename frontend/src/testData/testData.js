@@ -187,13 +187,3 @@ export const getUserDataById = (userId)=> {
 const username = 'admin';
 const password = 'kembosean7';
 
-fetch('http://localhost:8080/api/wecode/users/1', {
-    method: 'GET',
-    // mode: "no-cors",
-    // headers: {
-    //     'Authorization': 'Basic ' + btoa(username + ':' + password) // Convert credentials to Base64
-    // }
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error('Error:', error));

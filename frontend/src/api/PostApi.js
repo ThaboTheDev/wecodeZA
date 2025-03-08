@@ -23,3 +23,14 @@ export const getPostById = async (id)=> {
         throw error
     }
 }
+
+
+// Gets a all user post by user ID
+export const getPostByUserId = async (userId)=> {
+    try{
+        const response = await axios.get(`http://localhost:8080/api/wecode/posts/user/${userId}`);
+        return response.data;
+    } catch (error){
+        console.log(error)
+    }
+}

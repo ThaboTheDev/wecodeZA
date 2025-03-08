@@ -6,11 +6,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-<<<<<<< HEAD
-@CrossOrigin
-=======
+
 @CrossOrigin(origins = "http://localhost:5173")
->>>>>>> 375b2abed6b7d71693b2f642fdd07097ec6310b7
 @RestController
 @RequestMapping(path = "api/wecode/users")
 public class UserController {
@@ -73,8 +70,4 @@ public class UserController {
         useService.updateUser(id, name, lastname, email, username, profession, bio);
         return ResponseEntity.ok("User details successfully updated");
     }
-
-
-
-
 }

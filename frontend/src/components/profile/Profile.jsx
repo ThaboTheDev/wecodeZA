@@ -28,15 +28,14 @@ function Profile({}) {
   }, []);
   
 
-
   if (loading) return <p>Loading...</p>;
 
   else if (data){
     const {id, username, lastname, name, bio} = data;
 
     // Navigates the Home and About sections
-    let currentPage = <ProfileHome buttonTypes={postButtons} userId={id} />;
-    if (userPage === 0) currentPage = <ProfileHome buttonTypes={postButtons} userId={id} />;
+    let currentPage = <ProfileHome buttonTypes={postButtons} userId={parseInt(id)} />;
+    if (userPage === 0) currentPage = <ProfileHome buttonTypes={postButtons} userId={parseInt(id)} />;
     else if (userPage === 1) currentPage = <ProfileAbout des={bio} following={33} followers={3322} dateJoined={2003} />
 
 
