@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./feed.css"
 import { feedFollowData } from './feedTestData'
 import { buttonTypes } from './buttonTypes';
@@ -9,6 +9,9 @@ import { Link } from 'react-router-dom';
 import { postData } from '../../testData/testData';
 import { users } from '../../testData/testData';
 import FeedHeader from '../feedHeader/FeedHeader';
+import axios from 'axios';
+import { getPosts } from '../../api/PostApi';
+import { getUsers } from '../../api/ProfileApi';
 
 function Feed({}) {
   // Makes sure post only has 1 button type -> like button
@@ -18,52 +21,89 @@ function Feed({}) {
       icon: <CiHeart />
     }
   ]
+  
+  const [feedData, setFeedData] = useState();
+  const [followUsers, setFollowUsers] = useState();
+  const [loadFeed, setLoadFeed] = useState(true);
+  const [followLoad, setFollowLoad] = useState(true);
 
-  return <>
-    <FeedHeader />
-    <main className='feedMain'>
-        <article className='feedLeft'>
-            <section className='topFeed'>
-              <p>+</p>
+  useEffect(()=>{
+    const fetchPosts = async ()=> {
+      try{
+        const data = await getPosts();
+        setFeedData(data);
+      } catch (error){
+        console.log(error);
+        throw error;
+      } finally{
+        setLoadFeed(false);
+      }
+    }
 
-              {
-                buttonTypes.map(x => {
-                  const {id, name} = x;
-                  return <button key={id}>{name}</button>
-                })
-              }
-            </section>
+    const fetchUsers = async ()=> {
+      try{
+        const data = await getUsers();
+        setFollowUsers(data);
+      } catch (error){
+        console.log(error);
+        throw error
+      } finally{
+        setFollowLoad(false);
+      }
+    }
 
-            <section className='bottomFeed'>
-              {
-                postData.map(x => {
-                  const {postId, name, title, content, userId} = x;
-                  return (
-                    
-                      <Post key={postId} buttonTypes={postButtons} id={postId} author={name} title={title} userId={userId} content={content} />
-                    
-                  )
-                })
-              }
-            </section>
-        </article>
+    fetchPosts();
+    fetchUsers();
+  },[])
 
-        <article className='rightFeed'>
-            <h2 className='fh'>
-                Follow new Author's
-            </h2>
+  if (loadFeed || followLoad) return <p>Loading...</p>
+  else if (feedData && followUsers){
+    return <>
+      <FeedHeader />
+      <main className='feedMain'>
+          <article className='feedLeft'>
+              <section className='topFeed'>
+                <p>+</p>
 
-            <section className='feedFollow'>
-              {
-                users.map(x => {
-                  const {userId, name, followers, following} = x;
-                  return userId != 1? <FeedFollow key={userId} id={userId} name={name} followers={followers} /> : "";
-                })
-              }
-            </section>
-        </article>
-    </main>
-  </>
+                {
+                  buttonTypes.map(x => {
+                    const {id, name} = x;
+                    return <button key={id}>{name}</button>
+                  })
+                }
+              </section>
+
+              <section className='bottomFeed'>
+                {
+                  feedData.map(x => {
+                    const {id, user, topic, title, context} = x;
+                    return (
+                      
+                        <Post key={id} buttonTypes={postButtons} id={id} author={"name"} title={title} userId={user} content={context} />
+                      
+                    )
+                  })
+                }
+              </section>
+          </article>
+
+          <article className='rightFeed'>
+              <h2 className='fh'>
+                  Follow new Author's
+              </h2>
+
+              <section className='feedFollow'>
+                {
+                  followUsers.map(x => {
+                    const {user, name, followers, following} = x;
+                    return user != 1? <FeedFollow key={user} id={user} name={name} followers={followers} /> : "";
+                  })
+                }
+              </section>
+          </article>
+      </main>
+    </>
+  }
 }
 
 export default Feed

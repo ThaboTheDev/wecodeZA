@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./post.css"
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { getPostById } from '../../api/PostApi';
 
 
 function Post({buttonTypes, id, author, title, content, userId}) {
     // If i direct to my account it will take me to my profile page else to other Authores profiles
     const passCorrectUrl = userId === 1? `/viewProfile` : `/viewAuthor/${userId}`;
+    
   return (
     <div className="postContainer" key={id}>
         <div className="feedPostDetails">
