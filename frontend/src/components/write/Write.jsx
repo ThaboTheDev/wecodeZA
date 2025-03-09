@@ -1,13 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./write.css"
 import { FaArrowLeft } from "react-icons/fa6";
 import FeedHeader from '../feedHeader/FeedHeader';
+import { sendPost } from '../../api/PostApi';
 
 function Write() {
     const [title, setTitle] = useState("");
     const [topic, setTopic] = useState("");
-    const [content, setContent] = useState("");
+    const [context, setContent] = useState("");
 
+    const createPostData = async ()=>{
+        let data = {
+            // id: 3,
+            "title": `# ${title}`,
+            "topic": `## ${topic}`,
+            "context": context
+        }
+
+        try{
+            let ye = await sendPost(data)
+            setContent("");
+            setTitle("");
+            setTopic("");
+            
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    // console.log(context);
   return <>
     <FeedHeader />
     <main className='writeMain'>
@@ -16,7 +36,7 @@ function Write() {
                 <FaArrowLeft />
             </button>
 
-            <button className='postButton'>
+            <button className='postButton' onClick={()=>createPostData()}>
                 Post
             </button>
         </section>
@@ -26,9 +46,9 @@ function Write() {
 
             <input type="text" onChange={e => setTopic(e.target.value)} value={topic} className='writeTopic' placeholder='Topic:' />
 
-            <p contentEditable onChange={e => setContent(e.target.value)} value={content} className='writeContent'>
+            <textarea onChange={e => setContent(e.target.value)} value={context} className='writeContent'>
 
-            </p>
+            </textarea>
         </section>
     </main>
   </>

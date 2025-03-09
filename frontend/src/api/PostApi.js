@@ -38,7 +38,7 @@ export const getPostByUserId = async (userId)=> {
 // Sends new post data to the DB
 export const sendPost = async (post)=> {
     try{
-        const response = await axios.post(`http://localhost:8080/api/wecode/posts/creatpost`, post);
+        const response = await axios.post(`http://localhost:8080/api/wecode/posts/creatpost/1`, post, { headers: { "Content-Type": "application/json" } });
         return response.data;
     } catch (error){
         console.log(error);
