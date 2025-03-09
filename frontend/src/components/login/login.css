@@ -15,7 +15,7 @@
 
     .loginWelcome{
         margin-bottom: 40px;
-        color: #021C8B;
+        color: #4B82C2;
         font-size: 96px;
         font-family: "Karantina", serif;
         font-weight: bold;
@@ -30,13 +30,9 @@
         height: 50%;
         width: 30%;
 
-        border-right: 1px solid #021C8B;
-        border-left: 1px solid #021C8B;
-        border-bottom: 1px solid #021C8B;
-        border-radius: 30px;
-
         display: grid;
         place-content: center;
+        place-items: center;
         gap: 2rem;
     }
 
@@ -52,7 +48,7 @@
 
         border: none;
         outline: none;
-        background-color: #021C8B;
+        background-color: #4B82C2;
         color: white
     }
 
@@ -67,14 +63,34 @@
     }
 
     .loginContainer a{
-        color: #021C8B;
+        color: #4B82C2;
         text-decoration: none;
 
         font-family: "Karantina", serif;
         font-weight: bold;
         font-style: normal;
     }
+
+    .loginContainer h2{
+        font-size: 3rem;
+        font-family: "Karla", serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        font-style: normal;
+    }
     /* >>> RESPONSIVE <<< */
+    @media screen and (max-width: 550px) {
+        .loginContainer button{
+            width: 20rem;
+            height: 47px;
+
+            font-size: 1rem;
+        }
+
+        .loginContainer p{
+            font-size: 0.7rem;
+        }
+    }
 /*  */
 
 
@@ -103,7 +119,15 @@
         border: none;
         outline: none;
 
-        border-bottom: 1px solid #021C8B;
+        border-bottom: 1px solid #4B82C2;
     }
     /* >>> RESPONSIVE <<< */
+    @media screen and (max-width: 550px) {
+        .loginForm input{
+            height: 47px;
+            width: 20rem;
+
+            font-size: 1rem;
+        }
+    }
 /*  */
