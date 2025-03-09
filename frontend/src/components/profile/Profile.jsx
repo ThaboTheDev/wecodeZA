@@ -12,12 +12,13 @@ function Profile({}) {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const [userPage, setUserPage] = useState(0);
+  const fetchUserId = JSON.parse(sessionStorage.getItem("userData"));
 
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const data = await getUserById(1)
+        const data = await getUserById(parseInt(fetchUserId.id))
         setData(data)
       } finally {
         setLoading(false);

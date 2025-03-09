@@ -26,6 +26,7 @@ function Feed({}) {
   const [followUsers, setFollowUsers] = useState();
   const [loadFeed, setLoadFeed] = useState(true);
   const [followLoad, setFollowLoad] = useState(true);
+  const fetchUserId = JSON.parse(sessionStorage.getItem("userData"));
 
   useEffect(()=>{
     const fetchPosts = async ()=> {
@@ -95,7 +96,7 @@ function Feed({}) {
                   followUsers.map(x => {
                     console.log(followUsers)
                     const {id, name} = x;
-                    return id != 1? <FeedFollow key={id} id={id} name={name} followers={32} /> : "";
+                    return id != parseInt(fetchUserId.id)? <FeedFollow key={id} id={id} name={name} followers={32} /> : "";
                   })
                 }
               </section>
