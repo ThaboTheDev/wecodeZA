@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './login.css'
 import Header from '../header/Header';
+import { getLoginData } from '../../api/UserApi';
 
 
 function Login({getId}) {
@@ -9,14 +10,18 @@ function Login({getId}) {
     const [userId, setUserId] = useState();
     const [page, setPage] = useState(0);
 
-    useEffect(()=>{
-        const getUserId = async ()=> {
-            let fetchData = await fetch(`/email/passcode`);
-            let getData = await fetchData.json();
-
-            setUserId(getData);
+    const login = async ()=> {
+        console.log("ghn")
+        if (email, passcode){
+            getLoginData({
+                name: "alex",
+                email: "jclaudhjbh024@student.wethinkcode"
+            }) .then(()=>{
+                window.location.assign("/feed")
+                console.log(sessionStorage.getItem("userData"))
+            })
         }
-    },[email, passcode])
+    }
 
     if (page == 0){
         return <>
@@ -32,11 +37,11 @@ function Login({getId}) {
                         <input type="text" onChange={e => setPasscode(e.target.value)} placeholder='Password' value={passcode} />
                     </div>
 
-                    <button className='loginSubmit'>
+                    <button className='loginSubmit' onClick={()=> login()}>
                         Login
                     </button>
                     <p>
-                        Dont't have an account? <a href="">Sign Up</a> instead.
+                        Dont't have an account? <a>Sign Up</a> instead.
                     </p>
                 </div>
             </article>
