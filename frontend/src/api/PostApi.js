@@ -40,6 +40,7 @@ export const sendPost = async (post)=> {
     try{
         // Fetches data from session storage
         const userData = JSON.parse(sessionStorage.getItem("userData"));
+        
         const response = await axios.post(`http://localhost:8080/api/wecode/posts/creatpost/${parseInt(userData.id)}`, post, { headers: { "Content-Type": "application/json" } });
         return response.data;
     } catch (error){
