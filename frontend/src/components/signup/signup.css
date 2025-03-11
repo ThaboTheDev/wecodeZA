@@ -1,78 +1,138 @@
-h1 {
-    text-align: center;
-    margin-top: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-}
+@import url('https://fonts.googleapis.com/css2?family=Karantina:wght@300;400;700&display=swap');
 
-.signup_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    /* background-color: blue; */
-}
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
 
-.signup_form {
+/* >>>>> signup APP <<<<< */
+.signupApp {
+    width: 100%;
+    height: 90vh;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width:400px;
-    height: 400px;
-    background-color: #334Aec;
-    /* gradient: linear-gradient(135deg, #71b7e6, #9b59b6); */
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-    font-family: Arial, Helvetica, sans-serif;
 }
 
-.signup_form input {
-    width: 200px;
-    height: 30px;
-    margin: 10px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: block;
+.signupWelcome {
+    margin-bottom: 40px;
+    color: #4B82C2;
+    font-size: 96px;
+    font-family: "Karantina", serif;
+    font-weight: bold;
+    font-style: normal;
 }
 
-.signup_form button {
-    width: 100px;
-    height: 30px;
-    margin: 10px;
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-    background-color: blue;
+/* >>> RESPONSIVE <<< */
+/*  */
+
+
+/* >>>>> signup CONTAINER <<<<< */
+.signupContainer {
+    height: 50%;
+    width: 30%;
+
+    display: grid;
+    place-content: center;
+    place-items: center;
+    gap: 2rem;
+}
+
+.signupContainer button {
+    height: 80px;
+    width: 30rem;
+
     color: white;
+    font-size: 3rem;
+    font-family: "Karantina", serif;
     font-weight: bold;
-    cursor: pointer;
+    font-style: normal;
+
+    border: none;
+    outline: none;
+    background-color: #4B82C2;
+    color: white
 }
 
-.signup_form button:hover {
-    background-color: darkblue;
+.signupContainer p {
+    text-align: center;
+
+    font-size: 1rem;
+    font-family: "Karla", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
 
-.form_group {
+.signupContainer a {
+    color: #4B82C2;
+    text-decoration: none;
+
+    font-family: "Karantina", serif;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.signupContainer h2 {
+    font-size: 3rem;
+    font-family: "Karla", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* >>> RESPONSIVE <<< */
+@media screen and (max-width: 550px) {
+    .signupContainer button {
+        width: 20rem;
+        height: 47px;
+
+        font-size: 1rem;
+    }
+
+    .signupContainer p {
+        font-size: 0.7rem;
+    }
+}
+
+/*  */
+
+
+/* >>>>> signup FORM <<<<< */
+.signupForm {
+    width: 100%;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    /* align-items: cent; */
-    text-align: left;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
 }
 
-/* .signup_form p {
-    margin: 10px;
-    font-size: 12px;
+.signupForm input {
+    padding: 20px;
+    width: 30rem;
+    height: 80px;
+
+    font-size: 2rem;
+    font-family: "Karla", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    border: none;
+    outline: none;
+
+    border-bottom: 1px solid #4B82C2;
 }
 
-.signup_form a {
-    text-decoration: none;
-    color: blue;
-    font-weight: bold;
+/* >>> RESPONSIVE <<< */
+@media screen and (max-width: 550px) {
+    .signupForm input {
+        height: 47px;
+        width: 20rem;
+
+        font-size: 1rem;
+    }
 }
 
-.signup_form a:hover {
-    text-decoration: underline;
-} */
+/*  */
