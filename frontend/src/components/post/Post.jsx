@@ -3,6 +3,7 @@ import "./post.css"
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { getPostById } from '../../api/PostApi';
+import { marked } from "marked"
 
 
 function Post({buttonTypes, id, author, title, content, userId}) {
@@ -10,7 +11,7 @@ function Post({buttonTypes, id, author, title, content, userId}) {
     const passCorrectUrl = userId === 1? `/viewProfile` : `/viewAuthor/${userId}`;
     
   return (
-    <div className="postContainer" key={id}>
+    <div className="postContainer" key={id} >
         <div className="feedPostDetails">
             <Link to={passCorrectUrl} style={{color: "black", textDecoration: "none"}}>
                 <p>{author}</p>
@@ -22,10 +23,10 @@ function Post({buttonTypes, id, author, title, content, userId}) {
                 Student at WeThinkCode
             </p>
         </div>
-
+        
         <Link to={`/postHome/${id}`} style={{color: "black", textDecoration: "none"}} >
             <div className="feedPostContent">
-                <h1>
+                <h1 >
                     {title}
                 </h1>
 

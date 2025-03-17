@@ -11,7 +11,6 @@ function Write() {
 
     const createPostData = async ()=>{
         let data = {
-            // id: 3,
             "title": `# ${title}`,
             "topic": `## ${topic}`,
             "context": context
@@ -22,6 +21,7 @@ function Write() {
             setContent("");
             setTitle("");
             setTopic("");
+            window.location.href = "/feed";
             
         } catch (error) {
             console.log(error);

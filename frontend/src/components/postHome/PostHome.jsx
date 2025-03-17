@@ -12,22 +12,11 @@ import { getPostById } from '../../api/PostApi';
 function PostHome() {
     const params = useParams();
     const postID = parseInt(params.postId);
-    const [userId, setUserId] = useState();
-
-    const getPostData = getPostDataById(Number(postID))
-    // const {userId, name, topic, title, content} = getPostData;
-
-    // If i direct to my account it will take me to my profile page else to other Authores profiles
-    
-
-    
     const [postHomeData, setPostHomeData] = useState();
     const [loadPostHome, setLoadPostHome] = useState(true);
 
-    // Stops the infinite renders when fetching data
-    let stop;
+    
     useEffect(()=>{
-          let isMounted = true; // Track mount status
         const fetchFeedData = async ()=> {
         try{
             const data = await getPostById(postID);
