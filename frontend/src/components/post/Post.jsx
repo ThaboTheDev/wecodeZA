@@ -6,9 +6,10 @@ import { getPostById } from '../../api/PostApi';
 import { marked } from "marked"
 
 
-function Post({buttonTypes, id, author, title, content, userId}) {
+function Post({buttonTypes, id, author, title, content, userId, postId}) {
     // If i direct to my account it will take me to my profile page else to other Authores profiles
     const passCorrectUrl = userId === 1? `/viewProfile` : `/viewAuthor/${userId}`;
+    // console.log(id)
     
   return (
     <div className="postContainer" key={id} >
@@ -38,8 +39,8 @@ function Post({buttonTypes, id, author, title, content, userId}) {
 
             <div className="feedPostInteractions">
                 {buttonTypes.map(x => {
-                    const {id, icon} = x;
-                    return <button key={id}> {icon} </button>
+                    const {id, icon, action} = x;
+                    return <button key={id} onClick={()=> action(postId)}> {icon} </button>
                 })}
             </div>
         

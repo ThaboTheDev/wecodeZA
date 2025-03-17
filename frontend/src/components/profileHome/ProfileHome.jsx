@@ -29,8 +29,9 @@ function ProfileHome({buttonTypes, userId}) {
           {
               userPosts.map(x => {
                     const {id, user, topic, title, context} = x;
+                    console.log(id)
                     return (
-                        <Post key={id} buttonTypes={buttonTypes} id={user} author={"name"} title={title} content={context} />
+                        <Post key={id} buttonTypes={buttonTypes} id={user} postId={id} author={"name"} title={title} content={context} />
                     )
               })
           }

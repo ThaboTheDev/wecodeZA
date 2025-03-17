@@ -35,6 +35,7 @@ export const getPostByUserId = async (userId)=> {
     }
 }
 
+
 // Sends new post data to the DB
 export const sendPost = async (post)=> {
     try{
@@ -45,6 +46,17 @@ export const sendPost = async (post)=> {
         return response.data;
     } catch (error){
         console.log(error);
+        throw error;
+    }
+}
+
+
+// Deletes a Post
+export const deletePost = async (postId)=>{
+    try{
+        const response = await axios.delete(`http://localhost:8080/api/wecode/posts/${postId}`);
+    } catch (error) {
+        console.log(error)
         throw error;
     }
 }
