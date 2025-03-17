@@ -11,19 +11,19 @@ function Signup({getId}) {
     const [email, setEmail] = useState("");
     const [passcode, setPasscode] = useState("");
 
+
     const signup = async ()=> {
         if (email, passcode, name, lastName, username){
             try{
                 createAccount({
-    "name": name,
-    "lastname": lastName,
-    "username": username,
-    "profession": "Wethinkcode student",
-    "email": email,
-    "password": "1231234edfsdfgd@sfg"
-}) .then(()=>{
+                    "name": name,
+                    "lastname": lastName,
+                    "username": username,
+                    "profession": "Wethinkcode student",
+                    "email": email,
+                    "password": passcode
+                }) .then(()=>{
                     window.location.assign("/feed")
-                    console.log(sessionStorage.getItem("userData"))
                 })
             } catch{
                 alert("Account not created please enter the correct details")
