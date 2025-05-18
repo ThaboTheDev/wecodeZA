@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css?family=League Gothic');
+
+@import url('https://fonts.googleapis.com/css?family=Kulim Park');
+
+.profileheader {
+    margin-top: 50px;
+    font-family: league Gothic;
+    font-size: 60px;
+    text-align: center;
+}
+
+.sections {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.leftSide {
+    /* background-color: green; */
+    width: 50%;
+    height: 100vh;
+    border-right: 1px solid black;
+}
+
+.rightSide {
+    /* background-color: blue; */
+    width: 50%;
+    padding-left: 80px;
+}
+
+.topPart {
+    background-color: #D9D9D9;
+    width: 620px;
+    height: 170px;
+    margin-left: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topPartHeader {
+    font-family: league Gothic;
+    font-size: 50px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.info {
+    padding-left: 10px;
+    font-family: Kulim Park;
+    font-size: 24px;
+}
+.editbutton {
+    width: 106px;
+    height: 58px;
+    background-color: #021C8B;
+    border-radius: 8px;
+    border:  none;
+    color: white;
+    margin-right: 30px;
+}
+
+.middlePart {
+    background-color: #D9D9D9;
+    width: 620px;
+    height: 200px;
+    margin-left: 20px;
+    margin-top: 20px; 
+}
+
+.stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.stat {
+    margin-top: 20px;
+    font-family: League Gothic;
+    font-size: 32px;
+    text-align: center;
+}
+
+.bottomPart {
+    background-color: #D9D9D9;
+    width: 620px;
+    height: 210px;
+    margin-left: 20px;
+    margin-top: 20px;
+    overflow: scroll;
+}
+
+.bottomPart::-webkit-scrollbar {
+    display: none;
+  }
+
+.bio {
+    padding: 10px;
+    font-family:  Kulim Park;
+}
+
+.account {
+    width: 430px;
+    height: 130px;
+    margin-top: 20px;
+    background-color: #D9D9D9;
+    border-radius: 50px;
+}
+
+.rightSideHeder {
+    font-family: Kulim Park;
+    font-size: 32px;
+    padding-left: 30px;
+    padding-top: 30px;
+}
+
+.rightSideInfo {
+    font-family: Kulim Park;
+    font-size: 20px;
+    padding-left: 30px;
+}
+
+.delete {
+    width: 430px;
+    height: 130px;
+    margin-top: 20px;
+    background-color: #D9D9D9; 
+    border-radius: 50px;
+}
+
+.password {
+    width: 430px;
+    height: 130px;
+    margin-top: 20px;
+    background-color: #D9D9D9;
+    border-radius: 50px;
+}
