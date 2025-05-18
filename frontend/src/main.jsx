@@ -13,6 +13,6 @@ import ViewAccount from './components/viewaccount/ViewAccount'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ViewAccount />
+    <LoggedIn />
   </StrictMode>,
 )

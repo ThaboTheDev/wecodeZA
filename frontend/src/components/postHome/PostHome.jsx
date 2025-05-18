@@ -1,33 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./postHome.css"
 import { FaArrowLeft } from "react-icons/fa6";
 import { Link, useParams } from 'react-router-dom';
 import { getPostDataById } from '../../testData/testData';
 import FeedHeader from '../feedHeader/FeedHeader';
+import axios from 'axios';
+import { getPostById } from '../../api/PostApi';
 
 
 
 function PostHome() {
     const params = useParams();
-    const postID = params.postId;
+    const postID = parseInt(params.postId);
+    const [postHomeData, setPostHomeData] = useState();
+    const [loadPostHome, setLoadPostHome] = useState(true);
 
-    const getPostData = getPostDataById(Number(postID))
-    const {userId, name, topic, title, content} = getPostData;
+    
+    useEffect(()=>{
+        const fetchFeedData = async ()=> {
+        try{
+            const data = await getPostById(postID);
+            setPostHomeData(data);
 
-    // If i direct to my account it will take me to my profile page else to other Authores profiles
-    const passCorrectUrl = userId === 1? `/viewProfile` : `/viewAuthor/${userId}`;
+        } finally{setLoadPostHome(false)}
+        }
+        fetchFeedData()
+    },[])
+
+
+if (loadPostHome) return <p>Loading...</p>
+else{
+    const {id, user, title, topic, context} = postHomeData;
+    const passCorrectUrl = userId === 1? `/viewProfile` : `/viewAuthor/${user}`;
   return <>
     <FeedHeader />
     <main className='postHomeContainer'>
-        {/* <div className="postHomebackButton">
-            <button>
-                <FaArrowLeft />
-            </button>
-        </div> */}
 
         <article className='postHomeMain'>
             <Link to={passCorrectUrl} className='postHomeName' style={{color: "black", textDecoration: "none"}}>
-                {name}
+                {"name"}
             </Link>
             <p>Student at WeThinkCode</p>
 
@@ -38,11 +49,12 @@ function PostHome() {
             <h1 className='postHomeTitle'>{title}</h1>
 
             <p>
-                {content}
+                {context}
             </p>
         </article>
     </main>
   </>
+}
 }
 
 export default PostHome

@@ -19,7 +19,6 @@ function FeedHeader() {
   return (
     <header className='feedHeader'>
         <input type="checkbox" id='feedSidebar' />
-
         <label htmlFor="feedSidebar">
             <ImMenu className='feedMenu'/>
         </label>
@@ -28,12 +27,14 @@ function FeedHeader() {
                 <label htmlFor='feedSidebar' className='feedNavItem feedClose'>
                     <MdClose />
                 </label>
+                <label htmlFor="feedSidebar">
                 <li className='feedNavItem'>
                     <Link to={"/feed"} style={linkStyles}>
                         <GoHome />
                         <p>Home</p>
                     </Link>
                 </li>
+                </label>
                 <li className='feedNavItem'>
                     <Link to={"/write"} style={linkStyles}>
                         <TfiWrite />

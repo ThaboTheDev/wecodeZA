@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./post.css"
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { getPostById } from '../../api/PostApi';
+import { marked } from "marked"
 
 
-function Post({buttonTypes, id, author, title, content}) {
+function Post({buttonTypes, id, author, title, content, userId, postId}) {
+    // If i direct to my account it will take me to my profile page else to other Authores profiles
+    const passCorrectUrl = userId === 1? `/viewProfile` : `/viewAuthor/${userId}`;
+    // console.log(id)
+    
   return (
-    <div className="postContainer" key={id}>
+    <div className="postContainer" key={id} >
         <div className="feedPostDetails">
-            <p>
-                {author}
-            </p>
+            <Link to={passCorrectUrl} style={{color: "black", textDecoration: "none"}}>
+                <p>{author}</p>
+            </Link>
             
             <p style={{borderRight: "1px solid black", width: "10px"}}></p>
 
@@ -17,10 +24,10 @@ function Post({buttonTypes, id, author, title, content}) {
                 Student at WeThinkCode
             </p>
         </div>
-
+        
         <Link to={`/postHome/${id}`} style={{color: "black", textDecoration: "none"}} >
             <div className="feedPostContent">
-                <h1>
+                <h1 >
                     {title}
                 </h1>
 
@@ -32,8 +39,8 @@ function Post({buttonTypes, id, author, title, content}) {
 
             <div className="feedPostInteractions">
                 {buttonTypes.map(x => {
-                    const {id, icon} = x;
-                    return <button key={id}> {icon} </button>
+                    const {id, icon, action} = x;
+                    return <button key={id} onClick={()=> action(postId)}> {icon} </button>
                 })}
             </div>
         

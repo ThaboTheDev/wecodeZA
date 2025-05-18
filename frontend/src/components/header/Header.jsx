@@ -7,7 +7,7 @@ function Header() {
   return (
     <header className='header'>
         <div className="logo">
-            <a href='#'>WeCodeZA</a>
+            <a href='/'>WeCodeZA</a>
         </div>
 
         <nav className='navbar'>
